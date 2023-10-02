@@ -9,7 +9,7 @@ const PrivateRoute = () => {
         console.log(`find auth ${auth}`)
     }
     return (
-        !auth
+        auth
             ?
             <Outlet />
             :
