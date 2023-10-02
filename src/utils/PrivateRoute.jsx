@@ -4,7 +4,7 @@ import UseAuthHook from "../hooks/useAuthHook";
 const PrivateRoute = () => {
     const [auth, setAuth] = useState(false);
     const { login, logInfo } = UseAuthHook();
-    if (logInfo && logInfo.success === true) {
+    if (logInfo.length != 0 && logInfo.success === "true") {
         setAuth(true);
         console.log(`find auth ${auth}`)
     }

@@ -4,22 +4,30 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Axios from './components/axios';
 import Signup from './pages/signUp';
 import Login from './pages/login';
-// import Update from './components/update';
+import Update from './components/update';
 import PrivateRoute from './utils/PrivateRoute';
+import DebounceDemo from './components/debounce';
+import Form from './components/formnew';
 function App() {
   return (
     <div>
-      <h1>React</h1>
-      <Router>
-        <Routes>
-          <Route element={<PrivateRoute />}>
-            <Route element={<Axios />} path="/" exact />
-            {/* <Route element={<Update />} path="/update" exact /> */}
-          </Route>
-          <Route element={<Signup />} path="/signup" exact />
-          <Route element={<Login />} path="/login" exact />
-        </Routes>
-      </Router>
+      <div>
+        <h3>Update Using Id</h3>
+        <Axios />
+      </div>
+      <div>
+        <h3>Update Using Id</h3>
+        <Update />
+      </div>
+      <div>
+        <h3>Debounce</h3>
+        <DebounceDemo />
+      </div>
+      <div>
+        <h3>Debounce</h3>
+        <Form />
+      </div>
+
     </div>
   );
 }
