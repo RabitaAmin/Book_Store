@@ -89,7 +89,7 @@ import { useForm, Controller } from "react-hook-form";
 import UseProductHook from "../hooks/useProductHook";
 import Update from './update';
 import axiosInstance from "../utils/axiosInstance";
-import "./Axios.css"; // Import the CSS file
+import "./Axios.css";
 
 const Axios = () => {
     const { update } = UseProductHook();

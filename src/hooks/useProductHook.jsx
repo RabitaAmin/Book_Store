@@ -2,9 +2,16 @@ import { useState } from "react";
 import axios from "axios";
 import axiosInstance from "../utils/axiosInstance";
 const UseProductHook = () => {
+    const [product,setProductData]=useState("")
     const [upData, setUpData] = useState("");
     const [updateData, setUpdateData] = useState([]);
     const [upExisting, setUpExisting] = useState("");
+    const fetchProduct=()=>
+    {
+        axiosInstance.get("/auth/getAll")
+        .then(resp=>{console.log(resp.data.data);setProductData(resp.data.data)})
+        .then(err=>{console.log(err)})
+    }
     const update = (formData) => {
         axiosInstance.post("/book/addBook", formData)
             .then(resp => {
@@ -14,7 +21,7 @@ const UseProductHook = () => {
             .catch(err => { console.log(err) })
     }
     const getData = (formData) => {
-        axios.get(`http://127.0.0.1:8000/auth/getAll?isbn=${formData}`)
+        axiosInstance.get(`http://127.0.0.1:8000/auth/getAll?isbn=${formData}`)
             .then(resp => {
                 console.log(resp.data.data);
                 setUpdateData(resp.data.data)
@@ -23,7 +30,7 @@ const UseProductHook = () => {
 
     }
     const updateExistingData = (formData, _id) => {
-        axios.patch(`http://127.0.0.1:8000/book/updateBook?_id=${_id}`, formData)
+        axiosInstance.patch(`http://127.0.0.1:8000/book/updateBook?_id=${_id}`, formData)
             .then(resp => {
                 console.log(resp.data.data);
                 setUpExisting(resp.data.data)
